@@ -9,7 +9,6 @@
 
     <style>
       body {
-        color: #404040;
         font: 400 15px/22px 'Source Sans Pro', 'Helvetica Neue', Sans-serif;
         margin: 0;
         padding: 0;
@@ -277,7 +276,7 @@ map.on('click', function(e) {
 
   var features = map.queryRenderedFeatures(e.point, {
 
-    //layers: ['chicago-parks'], //  name of the layer
+    layers: ['chicago-parks'], //  name of the layer
           // I am getting error  The layer 'chicago-parks' does not exist in the map's style and cannot be queried for features.
 
     center: [-77.38, 39], // starting position
