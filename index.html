@@ -25,52 +25,53 @@
         width: 66.6666%;
 
       }
-    .sidebar {
-       width: 33.3333%;
-      }
+      .sidebar {
+        width: 33.3333%;
+       }
       .pad2 {
-      padding: 20px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    }
+        padding: 20px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        }
 
 
-    .calling {
-  height: 100%;
-  overflow: auto;
-  padding-bottom: 60px;
-}
+      .calling {
+        height: 100%;
+        overflow: auto;
+        padding-bottom: 60px;
+        }
 
-.calling .item .ttile{
-  display: block;
-  border-bottom: 1px solid #eee;
-  padding: 10px;
-  text-decoration: none;
-}
+      .calling .item .ttile{
+        display: block;
+        border-bottom: 1px solid #eee;
+        padding: 10px;
+        text-decoration: none;
+        }
 
-.calling .item:last-child { border-bottom: none; }
+      .calling .item:last-child { border-bottom: none; }
 
-.calling .item .title {
-  display: block;
-  color: #00853e;
-  font-weight: 700;
-}
+      .calling .item .title {
+        display: block;
+        color: #00853e;
+        font-weight: 700;
+        }
 
-.calling .item .title small { font-weight: 400; }
+      .calling .item .title small { font-weight: 400; }
 
-.calling .item.active .title,
-.calling .item .title:hover { color: #8cc63f; }
+      .calling .item.active .title,
+      .calling .item .title:hover { color: #8cc63f; }
 
-.calling .item.active {
-  background-color: #f8f8f8;
-}
+      .calling .item.active {
+         background-color: #f8f8f8;
+      }
 
-.mapboxgl-popup {
+      .mapboxgl-popup {
         max-width: 400px;
         font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    }
+      }
     </style>
+    
   </head>
   <body>
     <div class="sidebar pad2">
@@ -275,7 +276,10 @@ map.on('load', function(e){
 map.on('click', function(e) {
 
   var features = map.queryRenderedFeatures(e.point, {
-    layers: ['chicago-parks'], // replace this with the name of the layer
+
+    //layers: ['chicago-parks'], // replace this with the name of the layer
+          // I am getting error  The layer 'chicago-parks' does not exist in the map's style and cannot be queried for features.
+
     center: [-77.38, 39], // starting position
     zoom: 15 // starting zoom
 
@@ -288,7 +292,7 @@ map.on('click', function(e) {
   var result = features[0];
 
   var popup = new mapboxgl.Popup({ offset: [0, -15] })
-    .setLngLat(feature.geometry.coordinates)
+    .setLngLat(result.geometry.coordinates)
     .setHTML('<h3>' + result.properties.title + '</h3><p>' + result.properties.description + '</p>')
     .setLngLat(result.geometry.coordinates)
     .addTo(map);
